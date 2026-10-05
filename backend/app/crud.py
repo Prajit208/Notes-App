@@ -28,7 +28,7 @@ def edit_note(db:Session,note_id: int,note:schemas.NoteUpdate):
     return get_note
     
 def retrieve_note(db:Session):
-    note=db.query(models.Note).all()
+    note=db.query(models.Note).order_by(models.Note.created_at.desc()).all()
     if note is None:
         return None    
     return note

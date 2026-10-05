@@ -1,0 +1,281 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=Nunito:wght@400;600&display=swap');
+
+/* ============ THEMES: keep exactly ONE block uncommented ============ */
+
+/* 1. Light */
+/* 
+:root {
+    --bg: #f6f6f3;
+    --surface: #ffffff;
+    --text: #2b2b2b;
+    --muted: #8a8a85;
+    --border: #e4e4df;
+    --accent: #4f6bed;
+    --accent-text: #ffffff;
+    --danger: #d64545;
+    --shadow: rgba(0, 0, 0, 0.06);
+} */
+
+
+/* 2. Dark */
+/* 
+:root {
+    --bg: #16161a;
+    --surface: #222228;
+    --text: #e8e8ea;
+    --muted: #8b8b95;
+    --border: #33333b;
+    --accent: #8ab4f8;
+    --accent-text: #14161a;
+    --danger: #f2706f;
+    --shadow: rgba(0, 0, 0, 0.4);
+} */
+
+
+/* 3. Purple dark (ACTIVE) */
+:root {
+    --bg: #13111c;
+    --surface: #1e1b2e;
+    --text: #e9e5f5;
+    --muted: #8b85a8;
+    --border: #3d3860;
+    --accent: #8b5cf6;
+    --accent-text: #ffffff;
+    --danger: #f87171;
+    --shadow: rgba(0, 0, 0, 0.45);
+}
+
+/* 4. Latte (warm cream and coffee brown) */
+/* 
+:root {
+    --bg: #f3ebe0;
+    --surface: #fbf6ee;
+    --text: #4a3b32;
+    --muted: #9a8777;
+    --border: #e3d6c5;
+    --accent: #b0764a;
+    --accent-text: #ffffff;
+    --danger: #c0504d;
+    --shadow: rgba(74, 59, 50, 0.1);
+} */
+
+
+/* 5. Forest (deep green and sage) */
+/* 
+:root {
+    --bg: #1a231f;
+    --surface: #243029;
+    --text: #e3ebe0;
+    --muted: #8da393;
+    --border: #35473c;
+    --accent: #8fb996;
+    --accent-text: #15201a;
+    --danger: #e68a7a;
+    --shadow: rgba(0, 0, 0, 0.4);
+} */
+
+
+/* 6. Blush (soft pink and peach) */
+/* 
+:root {
+    --bg: #fdf0ec;
+    --surface: #fff8f5;
+    --text: #5a3d3d;
+    --muted: #b08c8c;
+    --border: #f2d9d2;
+    --accent: #e07a5f;
+    --accent-text: #ffffff;
+    --danger: #c9484a;
+    --shadow: rgba(90, 61, 61, 0.08);
+} */
+
+
+/* 7. Ocean dusk (dark blue-grey and teal) */
+/* 
+:root {
+    --bg: #0f1b26;
+    --surface: #182836;
+    --text: #dbe7ef;
+    --muted: #7f98aa;
+    --border: #284154;
+    --accent: #5fc4b8;
+    --accent-text: #0c1a20;
+    --danger: #f0817f;
+    --shadow: rgba(0, 0, 0, 0.45);
+} */
+
+
+/* ============ BASE ============ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 40px 20px;
+    max-width: 900px;
+    margin-inline: auto;                 /* centers the whole app */
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Nunito', Georgia, sans-serif;
+    line-height: 1.5;
+    transition: background 0.3s, color 0.3s;
+}
+
+h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 2.4rem;
+    text-align: center;
+    margin: 0 0 30px;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+}
+
+input,
+textarea,
+button {
+    font-family: inherit;                /* stops the browser using its own font */
+    font-size: 1rem;
+    color: var(--text);
+}
+
+/* ============ NEW NOTE FORM ============ */
+
+#write-note {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 520px;
+    margin: 36px auto;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px var(--shadow);
+}
+
+#write-note input,
+#write-note textarea {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#write-note textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+#write-note input:focus,
+#write-note textarea:focus {
+    border-color: var(--accent);
+}
+
+::placeholder {
+    color: var(--muted);
+}
+
+#save-btn {
+    align-self: flex-end;
+    padding: 8px 22px;
+    background: var(--accent);
+    color: var(--accent-text);
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+}
+
+#save-btn:hover {
+    opacity: 0.85;
+}
+
+#save-btn:active {
+    transform: scale(0.97);
+}
+
+/* ============ NOTE CARDS ============ */
+
+#notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));   /* as many columns as fit */
+    gap: 18px;
+}
+
+.note {
+    display: grid;
+    grid-template-columns: auto auto 1fr;    /* Edit, Delete, then empty space */
+    gap: 8px;
+    align-content: start;
+    padding: 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.note:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow);
+}
+
+/* fields take the full width of the card, buttons share the row below */
+.note input,
+.note textarea {
+    grid-column: 1 / -1;
+    width: 100%;
+    background: transparent;
+    border: none;                        /* looks like plain text until you click it */
+    outline: none;
+    padding: 4px;
+    border-radius: 6px;
+}
+
+.note input {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+.note textarea {
+    min-height: 110px;
+    resize: vertical;
+    color: var(--text);
+}
+
+.note input:focus,
+.note textarea:focus {
+    background: var(--bg);               /* soft highlight while editing */
+}
+
+/* ============ CARD BUTTONS ============ */
+
+.edit-btn,
+.delete-btn {
+    padding: 5px 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.edit-btn:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-text);
+}
+
+.delete-btn:hover {
+    background: var(--danger);
+    border-color: var(--danger);
+    color: #ffffff;
+}
