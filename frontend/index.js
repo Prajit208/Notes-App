@@ -1,4 +1,6 @@
-const API="http://127.0.0.1:8000/notes"
+const API = location.hostname === "localhost"
+    ? "http://localhost:8000/notes"
+    : "https://notes-app-o8la.onrender.com/notes";
 const displayNotesEl=document.getElementById('notes')
 
 async function loadNotes(){
