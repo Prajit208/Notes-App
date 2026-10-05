@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    container_name: notes_backend
+    ports:
+      - "8000:8000"
+    # This line tells Docker: "Go grab the variables from my backend .env file"
+    env_file:
+      - ./backend/.env
+    restart: always
+
+  frontend:
+    build: ./frontend
+    container_name: notes_frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
