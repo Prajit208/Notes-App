@@ -13,6 +13,7 @@ origins = [
     "http://localhost:5500",
     "http://localhost",
     "http://127.0.0.1",
+    "https://silly-panda-c0fa09.netlify.app",
 ]
 app.add_middleware(
     CORSMiddleware,
